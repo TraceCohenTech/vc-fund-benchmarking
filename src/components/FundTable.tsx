@@ -13,6 +13,8 @@ type EnrichedRow = DerivedFundRow & { percentile: number | null };
 export default function FundTable({ rows }: Props) {
   const [sortKey, setSortKey] = useState<SortKey>("netDPI");
   const [sortAsc, setSortAsc] = useState(false);
+  const [page, setPage] = useState(0);
+  const perPage = 25;
 
   // Compute percentile rank within same-vintage peers
   const enriched: EnrichedRow[] = (() => {
@@ -36,6 +38,7 @@ export default function FundTable({ rows }: Props) {
   const handleSort = (key: SortKey) => {
     if (key === sortKey) setSortAsc(!sortAsc);
     else { setSortKey(key); setSortAsc(false); }
+    setPage(0);
   };
 
   const sorted = [...enriched].sort((a, b) => {
@@ -64,7 +67,10 @@ export default function FundTable({ rows }: Props) {
       className="bg-white rounded-xl border border-slate-200 p-6"
     >
       <h2 className="text-lg font-semibold text-slate-900 mb-1">All Funds</h2>
-      <p className="text-xs text-slate-400 mb-4">Click any column header to sort. DPI-first by default — what LPs actually received back.</p>
+      <p className="text-xs text-slate-400 mb-4">
+        Click any column header to sort. DPI-first by default — what LPs actually received back.
+        Showing {Math.min(page * perPage + 1, sorted.length)}–{Math.min((page + 1) * perPage, sorted.length)} of {sorted.length} funds.
+      </p>
 
       <div className="overflow-x-auto">
         <table className="w-full text-sm">
@@ -93,7 +99,7 @@ export default function FundTable({ rows }: Props) {
             </tr>
           </thead>
           <tbody>
-            {sorted.map((r) => (
+            {sorted.slice(page * perPage, (page + 1) * perPage).map((r) => (
               <tr key={r.fundName} className="border-b border-slate-50 hover:bg-slate-50">
                 <td className="py-2 px-3 font-medium" style={{ color: firmColor(r.firm) }}>{r.firm}</td>
                 <td className="py-2 px-3 text-slate-700">{r.fundName}</td>
@@ -146,6 +152,58 @@ export default function FundTable({ rows }: Props) {
           </tbody>
         </table>
       </div>
+
+      {/* Pagination */}
+      {sorted.length > perPage && (
+        <div className="flex items-center justify-between mt-4 pt-4 border-t border-slate-100">
+          <button
+            onClick={() => setPage((p) => Math.max(0, p - 1))}
+            disabled={page === 0}
+            className="px-3 py-1.5 text-xs font-medium rounded-lg border border-slate-200 text-slate-600 hover:bg-slate-50 disabled:opacity-30 disabled:cursor-not-allowed transition-colors"
+          >
+            Previous
+          </button>
+          <div className="flex items-center gap-1">
+            {(() => {
+              const total = Math.ceil(sorted.length / perPage);
+              const pages: (number | "...")[] = [];
+              if (total <= 7) {
+                for (let i = 0; i < total; i++) pages.push(i);
+              } else {
+                pages.push(0);
+                if (page > 2) pages.push("...");
+                for (let i = Math.max(1, page - 1); i <= Math.min(total - 2, page + 1); i++) pages.push(i);
+                if (page < total - 3) pages.push("...");
+                pages.push(total - 1);
+              }
+              return pages.map((p, idx) =>
+                p === "..." ? (
+                  <span key={`dot-${idx}`} className="w-8 h-8 flex items-center justify-center text-xs text-slate-400">...</span>
+                ) : (
+                  <button
+                    key={p}
+                    onClick={() => setPage(p)}
+                    className={`w-8 h-8 rounded-lg text-xs font-medium transition-colors ${
+                      p === page
+                        ? "bg-slate-900 text-white"
+                        : "text-slate-500 hover:bg-slate-100"
+                    }`}
+                  >
+                    {p + 1}
+                  </button>
+                )
+              );
+            })()}
+          </div>
+          <button
+            onClick={() => setPage((p) => Math.min(Math.ceil(sorted.length / perPage) - 1, p + 1))}
+            disabled={page >= Math.ceil(sorted.length / perPage) - 1}
+            className="px-3 py-1.5 text-xs font-medium rounded-lg border border-slate-200 text-slate-600 hover:bg-slate-50 disabled:opacity-30 disabled:cursor-not-allowed transition-colors"
+          >
+            Next
+          </button>
+        </div>
+      )}
     </motion.div>
   );
 }
