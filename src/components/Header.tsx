@@ -23,8 +23,8 @@ export default function Header({ fundCount, firmCount }: Props) {
         </h1>
       </div>
       <p className="text-slate-500 text-sm ml-[52px]">
-        Compare venture fund performance side-by-side. DPI-first analysis with
-        quartile benchmarks, PME, and LP economics.
+        The most comprehensive free VC fund performance database. DPI-first analysis with
+        quartile benchmarks, PME, and LP economics across 80+ firms.
       </p>
       <div className="flex gap-2 mt-3 ml-[52px]">
         <span className="px-2.5 py-0.5 rounded-full text-xs font-medium bg-emerald-50 text-emerald-700">
