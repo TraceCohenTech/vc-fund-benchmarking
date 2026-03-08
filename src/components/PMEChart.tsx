@@ -6,8 +6,10 @@ import { firmColor } from "./chartColors";
 type Props = { rows: DerivedFundRow[] };
 
 export default function PMEChart({ rows }: Props) {
+  // Only show funds from 2004+ (where we have reliable S&P 500 data)
+  // and cap at current year to avoid future vintages
   const data = rows
-    .filter((r) => r.pme != null && r.netTVPI != null)
+    .filter((r) => r.pme != null && r.netTVPI != null && r.vintage >= 2004 && r.vintage <= 2025)
     .map((r) => ({
       vintage: r.vintage,
       pme: r.pme!,
@@ -35,9 +37,10 @@ export default function PMEChart({ rows }: Props) {
           <XAxis
             dataKey="vintage"
             type="number"
-            domain={["auto", "auto"]}
+            domain={[2004, 2025]}
             tick={{ fontSize: 11, fill: "#64748b" }}
             name="Vintage"
+            allowDataOverflow
           />
           <YAxis
             dataKey="pme"

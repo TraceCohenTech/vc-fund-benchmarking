@@ -6,8 +6,9 @@ import { firmColor } from "./chartColors";
 type Props = { rows: DerivedFundRow[] };
 
 export default function ScaleVsReturns({ rows }: Props) {
+  // Filter out extreme outliers (>$25B funds like SoftBank Vision) that break the scale
   const data = rows
-    .filter((r) => r.netTVPI != null && r.fundSizeUSDm != null)
+    .filter((r) => r.netTVPI != null && r.fundSizeUSDm != null && r.fundSizeUSDm! <= 25000)
     .map((r) => ({
       size: r.fundSizeUSDm!,
       tvpi: r.netTVPI!,

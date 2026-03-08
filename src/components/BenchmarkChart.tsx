@@ -9,22 +9,24 @@ type Props = {
 };
 
 export default function BenchmarkChart({ rows, benchmarks }: Props) {
-  // Build chart data: benchmark bands + fund scatter points
-  const vintages = [...new Set([...benchmarks.map((b) => b.vintage), ...rows.map((r) => r.vintage)])].sort();
+  // Only use benchmark vintages as the x-axis range
+  const bmVintages = benchmarks.map((b) => b.vintage).sort();
+  const minVintage = bmVintages[0] ?? 2004;
+  const maxVintage = bmVintages[bmVintages.length - 1] ?? 2024;
 
-  const chartData = vintages.map((v) => {
-    const bm = benchmarks.find((b) => b.vintage === v);
+  const chartData = bmVintages.map((v) => {
+    const bm = benchmarks.find((b) => b.vintage === v)!;
     return {
       vintage: v,
-      topQ: bm?.topQuartileTVPI ?? null,
-      median: bm?.medianTVPI ?? null,
-      bottomQ: bm?.bottomQuartileTVPI ?? null,
+      topQ: bm.topQuartileTVPI,
+      median: bm.medianTVPI,
+      bottomQ: bm.bottomQuartileTVPI,
     };
   });
 
-  // Fund scatter points
+  // Fund scatter points — only include funds within benchmark vintage range
   const scatterData = rows
-    .filter((r) => r.netTVPI != null)
+    .filter((r) => r.netTVPI != null && r.vintage >= minVintage && r.vintage <= maxVintage)
     .map((r) => ({
       vintage: r.vintage,
       tvpi: r.netTVPI!,

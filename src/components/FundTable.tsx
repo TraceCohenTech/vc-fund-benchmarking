@@ -78,8 +78,10 @@ export default function FundTable({ rows }: Props) {
                     >
                       {r.quartile}
                     </span>
+                  ) : r.netTVPI == null ? (
+                    <span className="text-slate-300 text-xs">No TVPI</span>
                   ) : (
-                    <span className="text-slate-300">\u2014</span>
+                    <span className="text-slate-400 text-xs">Pre-benchmark</span>
                   )}
                 </td>
               </tr>
