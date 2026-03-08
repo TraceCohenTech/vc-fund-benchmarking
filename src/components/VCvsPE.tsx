@@ -1,6 +1,6 @@
 import { useMemo } from "react";
 import { motion } from "framer-motion";
-import { BarChart, Bar, XAxis, YAxis, Tooltip, ResponsiveContainer, CartesianGrid, Legend, Line, Area, ComposedChart } from "recharts";
+import { XAxis, YAxis, Tooltip, ResponsiveContainer, CartesianGrid, Legend, Line, Area, ComposedChart } from "recharts";
 import type { DerivedFundRow } from "../types";
 import { median } from "../utils/calculations";
 
@@ -51,22 +51,6 @@ export default function VCvsPE({ rows }: Props) {
       };
     });
   }, [rows]);
-
-  // Reshape data for bar chart: metrics as rows, strategies as separate bars
-  const barData = useMemo(() => [
-    {
-      metric: "TVPI",
-      "Early-Stage VC": stats.find((s) => s.strategy === "Early-Stage VC")?.medianTVPI ?? 0,
-      "Multi-Stage": stats.find((s) => s.strategy === "Multi-Stage")?.medianTVPI ?? 0,
-      "Growth Equity": stats.find((s) => s.strategy === "Growth Equity")?.medianTVPI ?? 0,
-    },
-    {
-      metric: "DPI",
-      "Early-Stage VC": stats.find((s) => s.strategy === "Early-Stage VC")?.medianDPI ?? 0,
-      "Multi-Stage": stats.find((s) => s.strategy === "Multi-Stage")?.medianDPI ?? 0,
-      "Growth Equity": stats.find((s) => s.strategy === "Growth Equity")?.medianDPI ?? 0,
-    },
-  ], [stats]);
 
   // Vintage-by-vintage comparison (2004+ only)
   const vintageData = useMemo(() => {
@@ -155,35 +139,44 @@ export default function VCvsPE({ rows }: Props) {
         {/* Bar chart — key metrics side by side */}
         <div>
           <h3 className="text-sm font-medium text-slate-700 mb-2">Median Returns by Strategy</h3>
-          <ResponsiveContainer width="100%" height={280}>
-            <BarChart
-              data={barData}
-              margin={{ top: 10, right: 10, bottom: 10, left: 10 }}
-            >
-              <CartesianGrid strokeDasharray="3 3" stroke="#f1f5f9" />
-              <XAxis dataKey="metric" tick={{ fontSize: 11, fill: "#64748b", fontWeight: 600 }} />
-              <YAxis tick={{ fontSize: 10, fill: "#64748b" }} tickFormatter={(v) => `${v}x`} />
-              <Tooltip
-                content={({ active, payload, label }) => {
-                  if (!active || !payload?.length) return null;
-                  return (
-                    <div className="bg-white border border-slate-200 rounded-lg p-3 shadow-lg text-xs">
-                      <p className="font-semibold text-slate-900 mb-1">Median {label}</p>
-                      {payload.map((p, i) => (
-                        <p key={i} style={{ color: p.color }}>
-                          {p.name}: <span className="font-mono font-bold">{Number(p.value).toFixed(2)}x</span>
-                        </p>
-                      ))}
-                    </div>
-                  );
-                }}
-              />
-              <Legend />
-              <Bar dataKey="Early-Stage VC" fill={STRATEGY_COLORS["Early-Stage VC"]} radius={[4, 4, 0, 0]} animationDuration={800} />
-              <Bar dataKey="Multi-Stage" fill={STRATEGY_COLORS["Multi-Stage"]} radius={[4, 4, 0, 0]} animationDuration={900} />
-              <Bar dataKey="Growth Equity" fill={STRATEGY_COLORS["Growth Equity"]} radius={[4, 4, 0, 0]} animationDuration={1000} />
-            </BarChart>
-          </ResponsiveContainer>
+          <div className="space-y-5 py-4">
+            {(["medianTVPI", "medianDPI"] as const).map((metric) => {
+              const label = metric === "medianTVPI" ? "TVPI" : "DPI";
+              const maxVal = Math.max(...stats.map((s) => s[metric]), 0.1);
+              return (
+                <div key={metric}>
+                  <p className="text-xs font-semibold text-slate-500 uppercase tracking-wider mb-2">{label}</p>
+                  <div className="space-y-2">
+                    {stats.map((s) => (
+                      <div key={s.strategy} className="flex items-center gap-3">
+                        <span className="text-xs text-slate-600 w-24 shrink-0 truncate">{s.strategy}</span>
+                        <div className="flex-1 h-7 bg-slate-50 rounded-md overflow-hidden relative group">
+                          <motion.div
+                            initial={{ width: 0 }}
+                            animate={{ width: `${(s[metric] / maxVal) * 100}%` }}
+                            transition={{ duration: 0.8, ease: "easeOut" }}
+                            className="h-full rounded-md"
+                            style={{ backgroundColor: STRATEGY_COLORS[s.strategy] }}
+                          />
+                          <span className="absolute inset-y-0 right-2 flex items-center text-xs font-mono font-bold text-slate-700">
+                            {s[metric].toFixed(2)}x
+                          </span>
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              );
+            })}
+          </div>
+          <div className="flex gap-4 justify-center mt-2">
+            {stats.map((s) => (
+              <div key={s.strategy} className="flex items-center gap-1.5 text-xs text-slate-500">
+                <div className="w-2.5 h-2.5 rounded-full" style={{ backgroundColor: STRATEGY_COLORS[s.strategy] }} />
+                {s.strategy}
+              </div>
+            ))}
+          </div>
         </div>
 
         {/* Line chart — vintage-by-vintage TVPI comparison */}
