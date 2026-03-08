@@ -1,7 +1,6 @@
 import { motion } from "framer-motion";
-import { ScatterChart, Scatter, XAxis, YAxis, Tooltip, ResponsiveContainer, CartesianGrid, ReferenceLine } from "recharts";
+import { ScatterChart, Scatter, XAxis, YAxis, Tooltip, ResponsiveContainer, CartesianGrid, ReferenceLine, Cell } from "recharts";
 import type { DerivedFundRow } from "../types";
-import { firmColor } from "./chartColors";
 
 type Props = { rows: DerivedFundRow[] };
 
@@ -71,26 +70,27 @@ export default function PMEChart({ rows }: Props) {
           />
           <Scatter data={data} name="Funds">
             {data.map((d, i) => (
-              <circle
+              <Cell
                 key={i}
-                r={Math.min(Math.max(Math.sqrt(d.size / 50), 3), 10)}
-                fill={firmColor(d.firm)}
+                fill={d.pme >= 1 ? "#059669" : "#ef4444"}
                 stroke="#fff"
                 strokeWidth={1.5}
-                opacity={0.8}
+                opacity={0.75}
               />
             ))}
           </Scatter>
         </ScatterChart>
       </ResponsiveContainer>
 
-      <div className="flex flex-wrap gap-3 mt-3 justify-center">
-        {[...new Set(data.map((d) => d.firm))].map((firm) => (
-          <div key={firm} className="flex items-center gap-1.5 text-xs text-slate-500">
-            <div className="w-2.5 h-2.5 rounded-full" style={{ backgroundColor: firmColor(firm) }} />
-            {firm}
-          </div>
-        ))}
+      <div className="flex items-center justify-center gap-6 mt-3">
+        <div className="flex items-center gap-1.5 text-xs text-slate-600">
+          <div className="w-3 h-3 rounded-full bg-emerald-600" />
+          Beat S&P 500 ({data.filter((d) => d.pme >= 1).length} funds)
+        </div>
+        <div className="flex items-center gap-1.5 text-xs text-slate-600">
+          <div className="w-3 h-3 rounded-full bg-red-500" />
+          Below S&P 500 ({data.filter((d) => d.pme < 1).length} funds)
+        </div>
       </div>
     </motion.div>
   );
