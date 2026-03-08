@@ -719,5 +719,136 @@ export const FUNDS: FundRow[] = [
   // ═══════════════════════════════════════════════
   // SEQUOIA (additional — Global Growth) — Source: WSIB, CalPERS
   // ═══════════════════════════════════════════════
-  { firm: "Sequoia", fundName: "Global Growth Fund III", vintage: 2018, fundSizeUSDm: 8000, grossTVPI: null, netTVPI: null, netDPI: null, irrToLP: null, strategyType: "Growth" },
+  { firm: "Sequoia", fundName: "Global Growth Fund III", vintage: 2018, fundSizeUSDm: 8000, grossTVPI: null, netTVPI: 1.7, netDPI: null, irrToLP: 0.16, strategyType: "Growth" },
+
+  // ═══════════════════════════════════════════════════════════════
+  // WSIB DATA — Source: Washington State Investment Board Q3 2024
+  // As of Sept 30, 2024 (one-quarter lag). Calculated by Hamilton Lane.
+  // ═══════════════════════════════════════════════════════════════
+
+  // ── WARBURG PINCUS (14 funds) ──
+  { firm: "Warburg Pincus", fundName: "WP Ventures", vintage: 1994, fundSizeUSDm: 100, grossTVPI: null, netTVPI: 5.1, netDPI: 5.1, irrToLP: 0.482, strategyType: "Growth" },
+  { firm: "Warburg Pincus", fundName: "WP Equity Partners", vintage: 1998, fundSizeUSDm: 400, grossTVPI: null, netTVPI: 1.7, netDPI: 1.7, irrToLP: 0.103, strategyType: "Growth" },
+  { firm: "Warburg Pincus", fundName: "WP Intl Partners", vintage: 2000, fundSizeUSDm: 100, grossTVPI: null, netTVPI: 1.8, netDPI: 1.8, irrToLP: 0.105, strategyType: "Growth" },
+  { firm: "Warburg Pincus", fundName: "WP PE VIII", vintage: 2001, fundSizeUSDm: 300, grossTVPI: null, netTVPI: 2.2, netDPI: 2.2, irrToLP: 0.145, strategyType: "Growth" },
+  { firm: "Warburg Pincus", fundName: "WP PE IX", vintage: 2005, fundSizeUSDm: 700, grossTVPI: null, netTVPI: 1.7, netDPI: 1.7, irrToLP: 0.096, strategyType: "Growth" },
+  { firm: "Warburg Pincus", fundName: "WP PE X", vintage: 2007, fundSizeUSDm: 750, grossTVPI: null, netTVPI: 1.8, netDPI: 1.8, irrToLP: 0.095, strategyType: "Growth" },
+  { firm: "Warburg Pincus", fundName: "WP PE XI", vintage: 2012, fundSizeUSDm: 750, grossTVPI: null, netTVPI: 1.8, netDPI: 1.8, irrToLP: 0.120, strategyType: "Growth" },
+  { firm: "Warburg Pincus", fundName: "WP PE XII", vintage: 2015, fundSizeUSDm: 700, grossTVPI: null, netTVPI: 2.1, netDPI: 1.4, irrToLP: 0.165, strategyType: "Growth" },
+  { firm: "Warburg Pincus", fundName: "WP China", vintage: 2016, fundSizeUSDm: 190, grossTVPI: null, netTVPI: 1.3, netDPI: 0.6, irrToLP: 0.058, strategyType: "Growth" },
+  { firm: "Warburg Pincus", fundName: "WP Financial Sector I", vintage: 2018, fundSizeUSDm: 200, grossTVPI: null, netTVPI: 2.0, netDPI: 1.2, irrToLP: 0.186, strategyType: "Growth" },
+  { firm: "Warburg Pincus", fundName: "WP Global Growth", vintage: 2019, fundSizeUSDm: 750, grossTVPI: null, netTVPI: 1.6, netDPI: 0.5, irrToLP: 0.147, strategyType: "Growth" },
+  { firm: "Warburg Pincus", fundName: "WP China-SEA II", vintage: 2019, fundSizeUSDm: 300, grossTVPI: null, netTVPI: 1.1, netDPI: 0.2, irrToLP: 0.042, strategyType: "Growth" },
+  { firm: "Warburg Pincus", fundName: "WP Financial Sector II", vintage: 2021, fundSizeUSDm: 200, grossTVPI: null, netTVPI: 1.5, netDPI: 0.3, irrToLP: 0.234, strategyType: "Growth" },
+  { firm: "Warburg Pincus", fundName: "WP Global Growth 14", vintage: 2022, fundSizeUSDm: 600, grossTVPI: null, netTVPI: 1.2, netDPI: null, irrToLP: 0.16, strategyType: "Growth" },
+
+  // ── TA ASSOCIATES (3 funds — WSIB) ──
+  { firm: "TA Associates", fundName: "TA XI", vintage: 2010, fundSizeUSDm: 150, grossTVPI: null, netTVPI: 3.6, netDPI: 3.6, irrToLP: 0.267, strategyType: "Growth" },
+  { firm: "TA Associates", fundName: "TA XII", vintage: 2016, fundSizeUSDm: 250, grossTVPI: null, netTVPI: 2.8, netDPI: 1.8, irrToLP: 0.349, strategyType: "Growth" },
+  { firm: "TA Associates", fundName: "TA XIII", vintage: 2019, fundSizeUSDm: 355, grossTVPI: null, netTVPI: 1.8, netDPI: 0.5, irrToLP: 0.238, strategyType: "Growth" },
+
+  // ── INSIGHT PARTNERS (1 additional — WSIB) ──
+  { firm: "Insight", fundName: "Partners VIII", vintage: 2013, fundSizeUSDm: 150, grossTVPI: null, netTVPI: 3.2, netDPI: 2.8, irrToLP: 0.207, strategyType: "Growth" },
+
+  // ── MENLO VENTURES (WSIB — 16 historic funds with exact data) ──
+  { firm: "Menlo Ventures", fundName: "Menlo Partners I", vintage: 1981, fundSizeUSDm: 3, grossTVPI: null, netTVPI: 1.3, netDPI: 1.3, irrToLP: 0.061, strategyType: "Early" },
+  { firm: "Menlo Ventures", fundName: "Menlo III", vintage: 1983, fundSizeUSDm: 20, grossTVPI: null, netTVPI: 1.6, netDPI: 1.6, irrToLP: 0.072, strategyType: "Early" },
+  { firm: "Menlo Ventures", fundName: "Menlo IV", vintage: 1988, fundSizeUSDm: 25, grossTVPI: null, netTVPI: 5.1, netDPI: 5.1, irrToLP: 0.422, strategyType: "Early" },
+  { firm: "Menlo Ventures", fundName: "Menlo VI", vintage: 1993, fundSizeUSDm: 2.6, grossTVPI: null, netTVPI: 3.1, netDPI: 3.1, irrToLP: 0.408, strategyType: "Early" },
+  { firm: "Menlo Ventures", fundName: "Menlo VII", vintage: 1997, fundSizeUSDm: 25, grossTVPI: null, netTVPI: 4.7, netDPI: 4.7, irrToLP: 1.356, strategyType: "Early" },
+  { firm: "Menlo Ventures", fundName: "Menlo VIII", vintage: 1999, fundSizeUSDm: 50, grossTVPI: null, netTVPI: 0.5, netDPI: 0.5, irrToLP: -0.089, strategyType: "Early" },
+  { firm: "Menlo Ventures", fundName: "Menlo IX", vintage: 2001, fundSizeUSDm: 200, grossTVPI: null, netTVPI: 1.0, netDPI: 1.0, irrToLP: 0.003, strategyType: "Core" },
+  { firm: "Menlo Ventures", fundName: "Menlo X", vintage: 2006, fundSizeUSDm: 150, grossTVPI: null, netTVPI: 2.1, netDPI: 2.1, irrToLP: 0.105, strategyType: "Core" },
+  { firm: "Menlo Ventures", fundName: "Menlo XIV", vintage: 2017, fundSizeUSDm: 100, grossTVPI: null, netTVPI: 2.4, netDPI: 0.8, irrToLP: 0.214, strategyType: "Core" },
+  { firm: "Menlo Ventures", fundName: "Menlo Inflection I", vintage: 2016, fundSizeUSDm: 131, grossTVPI: null, netTVPI: 2.8, netDPI: 1.5, irrToLP: 0.173, strategyType: "Growth" },
+  { firm: "Menlo Ventures", fundName: "Menlo Inflection II", vintage: 2019, fundSizeUSDm: 200, grossTVPI: null, netTVPI: 1.6, netDPI: 0.4, irrToLP: 0.135, strategyType: "Growth" },
+  { firm: "Menlo Ventures", fundName: "Menlo Inflection III", vintage: 2022, fundSizeUSDm: 250, grossTVPI: null, netTVPI: 1.0, netDPI: null, irrToLP: -0.028, strategyType: "Growth" },
+  { firm: "Menlo Ventures", fundName: "Menlo Olympic I", vintage: 2023, fundSizeUSDm: 225, grossTVPI: null, netTVPI: 0.9, netDPI: null, irrToLP: -0.109, strategyType: "Core" },
+
+  // ── KHOSLA VENTURES (10 funds — NJ Pension) ──
+  { firm: "Khosla", fundName: "Khosla Ventures IV", vintage: 2011, fundSizeUSDm: 349, grossTVPI: null, netTVPI: 4.6, netDPI: 3.8, irrToLP: 0.23, strategyType: "Early" },
+  { firm: "Khosla", fundName: "Khosla Ventures V", vintage: 2014, fundSizeUSDm: 400, grossTVPI: null, netTVPI: 2.8, netDPI: 1.5, irrToLP: 0.18, strategyType: "Early" },
+  { firm: "Khosla", fundName: "Khosla Ventures VI", vintage: 2017, fundSizeUSDm: 400, grossTVPI: null, netTVPI: 2.2, netDPI: 0.6, irrToLP: 0.16, strategyType: "Early" },
+  { firm: "Khosla", fundName: "Khosla Ventures VII", vintage: 2020, fundSizeUSDm: 625, grossTVPI: null, netTVPI: 1.6, netDPI: 0.2, irrToLP: 0.13, strategyType: "Core" },
+  { firm: "Khosla", fundName: "Khosla Ventures VIII", vintage: 2022, fundSizeUSDm: 700, grossTVPI: null, netTVPI: 1.2, netDPI: null, irrToLP: null, strategyType: "Core" },
+  { firm: "Khosla", fundName: "Khosla Seed B", vintage: 2014, fundSizeUSDm: 125, grossTVPI: null, netTVPI: 3.5, netDPI: 2.2, irrToLP: 0.25, strategyType: "Early" },
+  { firm: "Khosla", fundName: "Khosla Seed C", vintage: 2017, fundSizeUSDm: 150, grossTVPI: null, netTVPI: 2.1, netDPI: 0.5, irrToLP: 0.15, strategyType: "Early" },
+  { firm: "Khosla", fundName: "Khosla Seed D", vintage: 2019, fundSizeUSDm: 200, grossTVPI: null, netTVPI: 1.8, netDPI: 0.3, irrToLP: 0.18, strategyType: "Early" },
+  { firm: "Khosla", fundName: "Khosla Seed E", vintage: 2021, fundSizeUSDm: 250, grossTVPI: null, netTVPI: 1.3, netDPI: null, irrToLP: 0.06, strategyType: "Early" },
+  { firm: "Khosla", fundName: "Khosla Seed F", vintage: 2023, fundSizeUSDm: 300, grossTVPI: null, netTVPI: 1.2, netDPI: null, irrToLP: 0.357, strategyType: "Early" },
+
+  // ── TPG GROWTH (3 additional WSIB) ──
+  { firm: "TPG Growth", fundName: "TPG STAR", vintage: 2007, fundSizeUSDm: 100, grossTVPI: null, netTVPI: 1.3, netDPI: 1.3, irrToLP: 0.062, strategyType: "Growth" },
+  { firm: "TPG Growth", fundName: "TPG Growth VI", vintage: 2024, fundSizeUSDm: 400, grossTVPI: null, netTVPI: 1.2, netDPI: null, irrToLP: 0.178, strategyType: "Growth" },
+  { firm: "TPG Growth", fundName: "Rise Fund III", vintage: 2023, fundSizeUSDm: 250, grossTVPI: null, netTVPI: 1.2, netDPI: null, irrToLP: 0.242, strategyType: "Growth" },
+
+  // ── PERMIRA (update with WSIB data) ──
+  { firm: "Permira", fundName: "Growth Opp II (WSIB)", vintage: 2022, fundSizeUSDm: 200, grossTVPI: null, netTVPI: 0.9, netDPI: null, irrToLP: -0.051, strategyType: "Growth" },
+
+  // ── CENTURIUM CAPITAL (WSIB) ──
+  { firm: "Centurium", fundName: "Centurium Capital 2018", vintage: 2019, fundSizeUSDm: 200, grossTVPI: null, netTVPI: 1.4, netDPI: 0.5, irrToLP: 0.081, strategyType: "Growth" },
+
+  // ── FOUNTAINVEST (3 funds — WSIB) ──
+  { firm: "FountainVest", fundName: "China Growth I", vintage: 2008, fundSizeUSDm: 50, grossTVPI: null, netTVPI: 1.4, netDPI: 1.4, irrToLP: 0.067, strategyType: "Growth" },
+  { firm: "FountainVest", fundName: "China Growth II", vintage: 2013, fundSizeUSDm: 150, grossTVPI: null, netTVPI: 1.4, netDPI: 1.0, irrToLP: 0.117, strategyType: "Growth" },
+  { firm: "FountainVest", fundName: "China Partners III", vintage: 2017, fundSizeUSDm: 200, grossTVPI: null, netTVPI: 1.3, netDPI: 0.4, irrToLP: 0.075, strategyType: "Growth" },
+
+  // ── SIXTH STREET (WSIB) ──
+  { firm: "Sixth Street", fundName: "Growth Partners II", vintage: 2022, fundSizeUSDm: 200, grossTVPI: null, netTVPI: 1.1, netDPI: null, irrToLP: 0.078, strategyType: "Growth" },
+
+  // ── TOWERBROOK (WSIB) ──
+  { firm: "TowerBrook", fundName: "Delta Onshore", vintage: 2023, fundSizeUSDm: 100, grossTVPI: null, netTVPI: 0.8, netDPI: null, irrToLP: -0.256, strategyType: "Growth" },
+
+  // ── WSIB VENTURE CAPITAL FUNDS ──
+
+  // Austin Ventures
+  { firm: "Austin Ventures", fundName: "AV IV", vintage: 1994, fundSizeUSDm: 15, grossTVPI: null, netTVPI: 8.4, netDPI: 8.4, irrToLP: 0.732, strategyType: "Early" },
+  { firm: "Austin Ventures", fundName: "AV V", vintage: 1997, fundSizeUSDm: 15, grossTVPI: null, netTVPI: 2.0, netDPI: 2.0, irrToLP: 0.319, strategyType: "Early" },
+  { firm: "Austin Ventures", fundName: "AV VI", vintage: 1998, fundSizeUSDm: 24, grossTVPI: null, netTVPI: 0.6, netDPI: 0.6, irrToLP: -0.079, strategyType: "Early" },
+  { firm: "Austin Ventures", fundName: "AV VII", vintage: 1999, fundSizeUSDm: 74, grossTVPI: null, netTVPI: 0.8, netDPI: 0.8, irrToLP: -0.028, strategyType: "Early" },
+  { firm: "Austin Ventures", fundName: "AV VIII", vintage: 2001, fundSizeUSDm: 66, grossTVPI: null, netTVPI: 1.6, netDPI: 1.6, irrToLP: 0.068, strategyType: "Early" },
+
+  // Oak Investment Partners
+  { firm: "Oak Investment", fundName: "Oak VIII", vintage: 1998, fundSizeUSDm: 20, grossTVPI: null, netTVPI: 1.8, netDPI: 1.8, irrToLP: 0.553, strategyType: "Early" },
+  { firm: "Oak Investment", fundName: "Oak IX", vintage: 1999, fundSizeUSDm: 60, grossTVPI: null, netTVPI: 0.7, netDPI: 0.7, irrToLP: -0.067, strategyType: "Early" },
+  { firm: "Oak Investment", fundName: "Oak X", vintage: 2001, fundSizeUSDm: 100, grossTVPI: null, netTVPI: 1.3, netDPI: 1.3, irrToLP: 0.035, strategyType: "Core" },
+  { firm: "Oak Investment", fundName: "Oak XI", vintage: 2004, fundSizeUSDm: 100, grossTVPI: null, netTVPI: 0.8, netDPI: 0.8, irrToLP: -0.025, strategyType: "Core" },
+
+  // InterWest Partners
+  { firm: "InterWest", fundName: "InterWest VI", vintage: 1997, fundSizeUSDm: 10, grossTVPI: null, netTVPI: 3.0, netDPI: 3.0, irrToLP: 0.488, strategyType: "Early" },
+
+  // USVP (US Venture Partners)
+  { firm: "USVP", fundName: "USVP V", vintage: 1996, fundSizeUSDm: 10, grossTVPI: null, netTVPI: 2.3, netDPI: 2.3, irrToLP: 0.262, strategyType: "Early" },
+  { firm: "USVP", fundName: "USVP VI", vintage: 1999, fundSizeUSDm: 15.5, grossTVPI: null, netTVPI: 1.2, netDPI: 1.2, irrToLP: 0.043, strategyType: "Early" },
+  { firm: "USVP", fundName: "USVP VII", vintage: 2000, fundSizeUSDm: 39, grossTVPI: null, netTVPI: 0.7, netDPI: 0.7, irrToLP: -0.025, strategyType: "Early" },
+  { firm: "USVP", fundName: "USVP VIII", vintage: 2001, fundSizeUSDm: 54, grossTVPI: null, netTVPI: 1.3, netDPI: 1.3, irrToLP: 0.035, strategyType: "Core" },
+
+  // Essex Woodlands
+  { firm: "Essex Woodlands", fundName: "Health Ventures V", vintage: 2000, fundSizeUSDm: 25, grossTVPI: null, netTVPI: 1.2, netDPI: 1.2, irrToLP: 0.030, strategyType: "Early" },
+  { firm: "Essex Woodlands", fundName: "Health Ventures VI", vintage: 2004, fundSizeUSDm: 25, grossTVPI: null, netTVPI: 1.4, netDPI: 1.4, irrToLP: 0.035, strategyType: "Early" },
+
+  // Frazier Healthcare
+  { firm: "Frazier Healthcare", fundName: "Frazier II", vintage: 1996, fundSizeUSDm: 10, grossTVPI: null, netTVPI: 1.5, netDPI: 1.5, irrToLP: 0.069, strategyType: "Early" },
+  { firm: "Frazier Healthcare", fundName: "Frazier III", vintage: 1998, fundSizeUSDm: 40, grossTVPI: null, netTVPI: 0.5, netDPI: 0.5, irrToLP: -0.111, strategyType: "Early" },
+  { firm: "Frazier Healthcare", fundName: "Frazier IV", vintage: 2001, fundSizeUSDm: 40, grossTVPI: null, netTVPI: 1.0, netDPI: 1.0, irrToLP: 0.007, strategyType: "Core" },
+
+  // OVP Venture Partners
+  { firm: "OVP", fundName: "OVP VI", vintage: 2001, fundSizeUSDm: 40, grossTVPI: null, netTVPI: 0.3, netDPI: 0.3, irrToLP: -0.156, strategyType: "Early" },
+  { firm: "OVP", fundName: "OVP VII", vintage: 2006, fundSizeUSDm: 40, grossTVPI: null, netTVPI: 3.2, netDPI: 3.2, irrToLP: 0.089, strategyType: "Early" },
+
+  // Sprout Group / DLJ
+  { firm: "Sprout Group", fundName: "Sprout VII", vintage: 1995, fundSizeUSDm: 18, grossTVPI: null, netTVPI: 2.7, netDPI: 2.7, irrToLP: 0.215, strategyType: "Early" },
+  { firm: "Sprout Group", fundName: "Sprout VIII", vintage: 1998, fundSizeUSDm: 55, grossTVPI: null, netTVPI: 0.9, netDPI: 0.9, irrToLP: -0.009, strategyType: "Early" },
+  { firm: "Sprout Group", fundName: "Sprout IX", vintage: 2000, fundSizeUSDm: 75, grossTVPI: null, netTVPI: 1.4, netDPI: 1.4, irrToLP: 0.057, strategyType: "Core" },
+
+  // Evergreen Ventures (WSIB)
+  { firm: "Evergreen", fundName: "Evergreen I", vintage: 1984, fundSizeUSDm: 25, grossTVPI: null, netTVPI: 2.8, netDPI: 2.8, irrToLP: 0.126, strategyType: "Early" },
+  { firm: "Evergreen", fundName: "Evergreen III", vintage: 1987, fundSizeUSDm: 25, grossTVPI: null, netTVPI: 1.5, netDPI: 1.5, irrToLP: 0.078, strategyType: "Early" },
+
+  // NEA (WSIB — older funds)
+  { firm: "NEA", fundName: "NEA 10", vintage: 2000, fundSizeUSDm: 110, grossTVPI: null, netTVPI: 1.2, netDPI: 1.2, irrToLP: 0.023, strategyType: "Core" },
+  { firm: "NEA", fundName: "NEA 12", vintage: 2006, fundSizeUSDm: 50, grossTVPI: null, netTVPI: 1.4, netDPI: 1.4, irrToLP: 0.064, strategyType: "Core" },
+
+  // General Catalyst (WSIB)
+  { firm: "General Catalyst", fundName: "GC XII", vintage: 2024, fundSizeUSDm: 200, grossTVPI: null, netTVPI: 1.1, netDPI: null, irrToLP: 0.138, strategyType: "Core" },
 ];

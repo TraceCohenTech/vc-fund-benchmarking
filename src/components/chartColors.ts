@@ -91,6 +91,22 @@ export const FIRM_COLORS: Record<string, string> = {
   "True Ventures": "#0d9488",
   "Peak XV": "#dc2626",
   "Upfront Ventures": "#2563eb",
+
+  // Tier 7 — WSIB-sourced funds
+  "Warburg Pincus": "#1e3a5f",
+  Centurium: "#475569",
+  FountainVest: "#0f766e",
+  "Sixth Street": "#1d4ed8",
+  TowerBrook: "#374151",
+  "Austin Ventures": "#ca8a04",
+  "Oak Investment": "#78350f",
+  InterWest: "#4d7c0f",
+  USVP: "#0e7490",
+  "Essex Woodlands": "#166534",
+  "Frazier Healthcare": "#7c2d12",
+  OVP: "#4338ca",
+  "Sprout Group": "#0369a1",
+  Evergreen: "#047857",
 };
 
 export const QUARTILE_COLORS: Record<string, string> = {
