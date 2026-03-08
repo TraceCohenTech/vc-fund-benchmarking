@@ -13,6 +13,7 @@ import DPILeaderboard from "./components/DPILeaderboard";
 import PMEChart from "./components/PMEChart";
 import ScaleVsReturns from "./components/ScaleVsReturns";
 import LPCalculator from "./components/LPCalculator";
+import VCvsPE from "./components/VCvsPE";
 import FundTable from "./components/FundTable";
 import Footer from "./components/Footer";
 
@@ -62,6 +63,11 @@ export default function App() {
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-8">
         <DPILeaderboard rows={filtered} />
         <PMEChart rows={filtered} />
+      </div>
+
+      {/* VC vs Growth Equity */}
+      <div className="mb-8">
+        <VCvsPE rows={filtered} />
       </div>
 
       {/* Scale vs Returns */}
