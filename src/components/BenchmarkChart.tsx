@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { ComposedChart, Area, Scatter, XAxis, YAxis, Tooltip, ResponsiveContainer, Legend, CartesianGrid } from "recharts";
+import { ComposedChart, Area, XAxis, YAxis, Tooltip, ResponsiveContainer, Legend, CartesianGrid, Scatter, Cell } from "recharts";
 import type { DerivedFundRow, BenchmarkData } from "../types";
 import { firmColor } from "./chartColors";
 
@@ -9,10 +9,20 @@ type Props = {
 };
 
 export default function BenchmarkChart({ rows, benchmarks }: Props) {
-  // Only use benchmark vintages as the x-axis range
   const bmVintages = benchmarks.map((b) => b.vintage).sort();
   const minVintage = bmVintages[0] ?? 2004;
   const maxVintage = bmVintages[bmVintages.length - 1] ?? 2024;
+
+  // Merge benchmark bands + fund dots into one dataset keyed by vintage
+  // Each vintage row has the benchmark band values + an array of fund TVPIs
+  const scatterData = rows
+    .filter((r) => r.netTVPI != null && r.vintage >= minVintage && r.vintage <= maxVintage)
+    .map((r) => ({
+      vintage: r.vintage,
+      tvpi: r.netTVPI!,
+      name: `${r.firm} — ${r.fundName}`,
+      firm: r.firm,
+    }));
 
   const chartData = bmVintages.map((v) => {
     const bm = benchmarks.find((b) => b.vintage === v)!;
@@ -23,16 +33,6 @@ export default function BenchmarkChart({ rows, benchmarks }: Props) {
       bottomQ: bm.bottomQuartileTVPI,
     };
   });
-
-  // Fund scatter points — only include funds within benchmark vintage range
-  const scatterData = rows
-    .filter((r) => r.netTVPI != null && r.vintage >= minVintage && r.vintage <= maxVintage)
-    .map((r) => ({
-      vintage: r.vintage,
-      tvpi: r.netTVPI!,
-      name: `${r.firm} — ${r.fundName}`,
-      firm: r.firm,
-    }));
 
   return (
     <motion.div
@@ -49,14 +49,29 @@ export default function BenchmarkChart({ rows, benchmarks }: Props) {
       <ResponsiveContainer width="100%" height={400}>
         <ComposedChart data={chartData} margin={{ top: 10, right: 10, bottom: 10, left: 10 }}>
           <CartesianGrid strokeDasharray="3 3" stroke="#f1f5f9" />
-          <XAxis dataKey="vintage" tick={{ fontSize: 11, fill: "#64748b" }} />
+          <XAxis
+            dataKey="vintage"
+            type="number"
+            domain={[minVintage, maxVintage]}
+            tick={{ fontSize: 11, fill: "#64748b" }}
+            tickCount={11}
+          />
           <YAxis tick={{ fontSize: 11, fill: "#64748b" }} tickFormatter={(v) => `${v}x`} domain={[0, "auto"]} />
           <Tooltip
-            formatter={(value, name) => {
-              if (name === "tvpi") return [`${Number(value).toFixed(1)}x`, "Net TVPI"];
-              return [`${Number(value).toFixed(1)}x`, name];
+            content={({ active, payload, label }) => {
+              if (!active || !payload?.length) return null;
+              const items = payload.filter((p) => p.value != null);
+              return (
+                <div className="bg-white border border-slate-200 rounded-lg p-3 shadow-lg text-xs">
+                  <p className="font-semibold text-slate-900 mb-1">Vintage {label}</p>
+                  {items.map((p, i) => (
+                    <p key={i} className="text-slate-600">
+                      {p.name}: <span className="font-mono font-bold">{Number(p.value).toFixed(1)}x</span>
+                    </p>
+                  ))}
+                </div>
+              );
             }}
-            labelFormatter={(v) => `Vintage ${v}`}
           />
           <Legend />
 
@@ -94,16 +109,18 @@ export default function BenchmarkChart({ rows, benchmarks }: Props) {
             connectNulls
           />
 
-          {/* Fund scatter */}
+          {/* Fund scatter — separate dataset, no line connecting them */}
           <Scatter
             data={scatterData}
             dataKey="tvpi"
             name="Funds"
+            legendType="circle"
+            line={false}
+            isAnimationActive={false}
           >
             {scatterData.map((d, i) => (
-              <circle
+              <Cell
                 key={i}
-                r={5}
                 fill={firmColor(d.firm)}
                 stroke="#fff"
                 strokeWidth={1.5}
