@@ -78,7 +78,7 @@ export default function ScaleVsReturns({ rows }: Props) {
                 name="TVPI"
               />
               <ReferenceLine x={500} stroke="#e11d48" strokeDasharray="6 3" label={{ value: "$500M", position: "top", fill: "#e11d48", fontSize: 10 }} />
-              <Tooltip content={({ payload }) => <ChartTooltip payload={payload as Array<{ payload: DataPoint }>} />} />
+              <Tooltip content={({ payload }) => <ChartTooltip payload={payload as unknown as Array<{ payload: DataPoint }>} />} />
               <Scatter data={small} name="Funds">
                 {small.map((d, i) => (
                   <circle
@@ -121,7 +121,7 @@ export default function ScaleVsReturns({ rows }: Props) {
                 name="TVPI"
               />
               <ReferenceLine x={3000} stroke="#f59e0b" strokeDasharray="6 3" label={{ value: "$3B", position: "top", fill: "#f59e0b", fontSize: 10 }} />
-              <Tooltip content={({ payload }) => <ChartTooltip payload={payload as Array<{ payload: DataPoint }>} />} />
+              <Tooltip content={({ payload }) => <ChartTooltip payload={payload as unknown as Array<{ payload: DataPoint }>} />} />
               <Scatter data={large} name="Funds">
                 {large.map((d, i) => (
                   <circle
