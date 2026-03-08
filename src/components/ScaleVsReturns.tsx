@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { ScatterChart, Scatter, XAxis, YAxis, Tooltip, ResponsiveContainer, CartesianGrid, ReferenceLine } from "recharts";
+import { ScatterChart, Scatter, XAxis, YAxis, Tooltip, ResponsiveContainer, CartesianGrid, ReferenceLine, Cell } from "recharts";
 import type { DerivedFundRow } from "../types";
 import { firmColor } from "./chartColors";
 
@@ -81,14 +81,7 @@ export default function ScaleVsReturns({ rows }: Props) {
               <Tooltip content={({ payload }) => <ChartTooltip payload={payload as unknown as Array<{ payload: DataPoint }>} />} />
               <Scatter data={small} name="Funds">
                 {small.map((d, i) => (
-                  <circle
-                    key={i}
-                    r={4.5}
-                    fill={firmColor(d.firm)}
-                    stroke="#fff"
-                    strokeWidth={1.5}
-                    opacity={0.8}
-                  />
+                  <Cell key={i} fill={firmColor(d.firm)} stroke="#fff" strokeWidth={1.5} opacity={0.8} />
                 ))}
               </Scatter>
             </ScatterChart>
@@ -124,14 +117,7 @@ export default function ScaleVsReturns({ rows }: Props) {
               <Tooltip content={({ payload }) => <ChartTooltip payload={payload as unknown as Array<{ payload: DataPoint }>} />} />
               <Scatter data={large} name="Funds">
                 {large.map((d, i) => (
-                  <circle
-                    key={i}
-                    r={4.5}
-                    fill={firmColor(d.firm)}
-                    stroke="#fff"
-                    strokeWidth={1.5}
-                    opacity={0.8}
-                  />
+                  <Cell key={i} fill={firmColor(d.firm)} stroke="#fff" strokeWidth={1.5} opacity={0.8} />
                 ))}
               </Scatter>
             </ScatterChart>
