@@ -1,6 +1,6 @@
 import { useMemo } from "react";
 import { motion } from "framer-motion";
-import { BarChart, Bar, XAxis, YAxis, Tooltip, ResponsiveContainer, CartesianGrid, Legend, LineChart, Line } from "recharts";
+import { BarChart, Bar, XAxis, YAxis, Tooltip, ResponsiveContainer, CartesianGrid, Legend, LineChart, Line, Cell, Area, ComposedChart } from "recharts";
 import type { DerivedFundRow } from "../types";
 import { median } from "../utils/calculations";
 
@@ -84,12 +84,18 @@ export default function VCvsPE({ rows }: Props) {
       </p>
 
       {/* Summary cards */}
-      <div className="grid grid-cols-3 gap-4 mb-6">
-        {stats.map((s) => (
-          <div
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
+        {stats.map((s, idx) => (
+          <motion.div
             key={s.strategy}
-            className="rounded-lg border p-4"
-            style={{ borderColor: STRATEGY_COLORS[s.strategy] + "40" }}
+            initial={{ opacity: 0, y: 10 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: idx * 0.1 }}
+            className="rounded-lg border p-4 hover:shadow-md transition-shadow duration-200"
+            style={{
+              borderColor: STRATEGY_COLORS[s.strategy] + "40",
+              background: `linear-gradient(135deg, ${STRATEGY_COLORS[s.strategy]}08 0%, transparent 60%)`,
+            }}
           >
             <div className="flex items-center gap-2 mb-3">
               <div className="w-3 h-3 rounded-full" style={{ backgroundColor: STRATEGY_COLORS[s.strategy] }} />
@@ -125,7 +131,7 @@ export default function VCvsPE({ rows }: Props) {
                 <span className="font-mono text-red-500">{s.pctBelow1x}%</span>
               </div>
             </div>
-          </div>
+          </motion.div>
         ))}
       </div>
 
@@ -141,16 +147,31 @@ export default function VCvsPE({ rows }: Props) {
               <CartesianGrid strokeDasharray="3 3" stroke="#f1f5f9" />
               <XAxis dataKey="strategy" tick={{ fontSize: 10, fill: "#64748b" }} />
               <YAxis tick={{ fontSize: 10, fill: "#64748b" }} tickFormatter={(v) => `${v}x`} />
-              <Tooltip formatter={(v) => [`${Number(v).toFixed(2)}x`]} />
+              <Tooltip
+                content={({ active, payload }) => {
+                  if (!active || !payload?.length) return null;
+                  const d = payload[0]?.payload;
+                  if (!d) return null;
+                  return (
+                    <div className="bg-white border border-slate-200 rounded-lg p-3 shadow-lg text-xs">
+                      <p className="font-semibold text-slate-900 mb-1">{d.strategy}</p>
+                      <p className="text-slate-600">Median TVPI: <span className="font-mono font-bold">{d.medianTVPI.toFixed(2)}x</span></p>
+                      <p className="text-slate-600">Median DPI: <span className="font-mono font-bold">{d.medianDPI.toFixed(2)}x</span></p>
+                      <p className="text-slate-600">Median IRR: <span className="font-mono font-bold">{d.medianIRR.toFixed(1)}%</span></p>
+                      <p className="text-slate-600">Hit Rate (3x+): <span className="font-mono font-bold">{d.pctAbove3x}%</span></p>
+                    </div>
+                  );
+                }}
+              />
               <Legend />
-              <Bar dataKey="medianTVPI" name="Median TVPI" radius={[4, 4, 0, 0]}>
+              <Bar dataKey="medianTVPI" name="Median TVPI" radius={[4, 4, 0, 0]} animationDuration={800}>
                 {stats.map((s, i) => (
-                  <rect key={i} fill={STRATEGY_COLORS[s.strategy]} />
+                  <Cell key={i} fill={STRATEGY_COLORS[s.strategy]} />
                 ))}
               </Bar>
-              <Bar dataKey="medianDPI" name="Median DPI" radius={[4, 4, 0, 0]}>
+              <Bar dataKey="medianDPI" name="Median DPI" radius={[4, 4, 0, 0]} animationDuration={1000}>
                 {stats.map((s, i) => (
-                  <rect key={i} fill={STRATEGY_COLORS[s.strategy] + "80"} />
+                  <Cell key={i} fill={STRATEGY_COLORS[s.strategy] + "80"} />
                 ))}
               </Bar>
             </BarChart>
@@ -161,37 +182,82 @@ export default function VCvsPE({ rows }: Props) {
         <div>
           <h3 className="text-sm font-medium text-slate-700 mb-2">Median TVPI by Vintage Year</h3>
           <ResponsiveContainer width="100%" height={280}>
-            <LineChart data={vintageData} margin={{ top: 10, right: 10, bottom: 10, left: 10 }}>
+            <ComposedChart data={vintageData} margin={{ top: 10, right: 10, bottom: 10, left: 10 }}>
               <CartesianGrid strokeDasharray="3 3" stroke="#f1f5f9" />
               <XAxis dataKey="vintage" tick={{ fontSize: 10, fill: "#64748b" }} />
               <YAxis tick={{ fontSize: 10, fill: "#64748b" }} tickFormatter={(v) => `${v}x`} />
-              <Tooltip formatter={(v) => [`${Number(v).toFixed(1)}x`]} labelFormatter={(v) => `Vintage ${v}`} />
+              <Tooltip
+                content={({ active, payload, label }) => {
+                  if (!active || !payload?.length) return null;
+                  const items = payload.filter((p) => p.value != null);
+                  return (
+                    <div className="bg-white border border-slate-200 rounded-lg p-3 shadow-lg text-xs">
+                      <p className="font-semibold text-slate-900 mb-1">Vintage {label}</p>
+                      {items.map((p, i) => (
+                        <p key={i} style={{ color: p.color }} className="font-medium">
+                          {p.name}: <span className="font-mono font-bold">{Number(p.value).toFixed(1)}x</span>
+                        </p>
+                      ))}
+                    </div>
+                  );
+                }}
+              />
               <Legend />
+              <Area
+                type="monotone"
+                dataKey="Early-Stage VC"
+                stroke="none"
+                fill={STRATEGY_COLORS["Early-Stage VC"]}
+                fillOpacity={0.06}
+                connectNulls
+              />
+              <Area
+                type="monotone"
+                dataKey="Multi-Stage"
+                stroke="none"
+                fill={STRATEGY_COLORS["Multi-Stage"]}
+                fillOpacity={0.06}
+                connectNulls
+              />
+              <Area
+                type="monotone"
+                dataKey="Growth Equity"
+                stroke="none"
+                fill={STRATEGY_COLORS["Growth Equity"]}
+                fillOpacity={0.06}
+                connectNulls
+              />
               <Line
                 type="monotone"
                 dataKey="Early-Stage VC"
                 stroke={STRATEGY_COLORS["Early-Stage VC"]}
                 strokeWidth={2.5}
-                dot={{ r: 3.5, fill: STRATEGY_COLORS["Early-Stage VC"] }}
+                dot={{ r: 4, fill: STRATEGY_COLORS["Early-Stage VC"], stroke: "#fff", strokeWidth: 2 }}
+                activeDot={{ r: 6, fill: STRATEGY_COLORS["Early-Stage VC"], stroke: "#fff", strokeWidth: 2 }}
                 connectNulls
+                animationDuration={1200}
               />
               <Line
                 type="monotone"
                 dataKey="Multi-Stage"
                 stroke={STRATEGY_COLORS["Multi-Stage"]}
                 strokeWidth={2.5}
-                dot={{ r: 3.5, fill: STRATEGY_COLORS["Multi-Stage"] }}
+                dot={{ r: 4, fill: STRATEGY_COLORS["Multi-Stage"], stroke: "#fff", strokeWidth: 2 }}
+                activeDot={{ r: 6, fill: STRATEGY_COLORS["Multi-Stage"], stroke: "#fff", strokeWidth: 2 }}
                 connectNulls
+                animationDuration={1200}
               />
               <Line
                 type="monotone"
                 dataKey="Growth Equity"
                 stroke={STRATEGY_COLORS["Growth Equity"]}
                 strokeWidth={2.5}
-                dot={{ r: 3.5, fill: STRATEGY_COLORS["Growth Equity"] }}
+                dot={{ r: 4, fill: STRATEGY_COLORS["Growth Equity"], stroke: "#fff", strokeWidth: 2 }}
+                activeDot={{ r: 6, fill: STRATEGY_COLORS["Growth Equity"], stroke: "#fff", strokeWidth: 2 }}
                 connectNulls
+                animationDuration={1200}
               />
-            </LineChart>
+            </ComposedChart>
           </ResponsiveContainer>
           <p className="text-xs text-slate-400 mt-1 text-center">
             Early-stage consistently outperforms on multiples but with wider dispersion.
