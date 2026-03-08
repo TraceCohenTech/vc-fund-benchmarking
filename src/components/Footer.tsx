@@ -1,4 +1,4 @@
-import { Twitter, Mail } from "lucide-react";
+import { Twitter, Mail, Shield } from "lucide-react";
 
 const SOURCES = [
   { name: "CalPERS PEP Fund Performance", note: "Insight, Khosla, Tiger Global, Lightspeed" },
@@ -31,6 +31,10 @@ export default function Footer() {
         Benchmark quartile data derived from Cambridge Associates and Carta quarterly reports.
         Individual fund data from public pension disclosures and published reports. All values net to LP unless noted.
       </p>
+      <div className="flex items-center justify-center gap-2 text-xs text-slate-400 mb-4 px-4 py-2.5 bg-slate-50 rounded-lg border border-slate-100 max-w-lg mx-auto">
+        <Shield className="w-3.5 h-3.5 text-emerald-500 shrink-0" />
+        <span>All data is processed locally in your browser. Nothing is stored on any server.</span>
+      </div>
       <div className="flex items-center justify-center gap-6 text-sm text-slate-400">
         <a
           href="https://x.com/Trace_Cohen"
