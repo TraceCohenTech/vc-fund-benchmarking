@@ -1,7 +1,7 @@
 import { motion } from "framer-motion";
 import type { DerivedFundRow } from "../types";
 import { mean, median } from "../utils/calculations";
-import { fmtX, fmtPct, fmtUSDm } from "../utils/format";
+import { fmtX, fmtPct } from "../utils/format";
 
 type Props = { rows: DerivedFundRow[] };
 
