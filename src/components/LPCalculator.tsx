@@ -105,7 +105,21 @@ export default function LPCalculator() {
               <CartesianGrid strokeDasharray="3 3" stroke="#f1f5f9" />
               <XAxis dataKey="name" tick={{ fontSize: 11, fill: "#64748b" }} />
               <YAxis tick={{ fontSize: 11, fill: "#64748b" }} tickFormatter={(v) => `$${v}M`} />
-              <Tooltip formatter={(v) => [`$${Number(v).toFixed(1)}M`]} />
+              <Tooltip
+                content={({ active, payload, label }) => {
+                  if (!active || !payload?.length) return null;
+                  return (
+                    <div className="bg-white border border-slate-200 rounded-lg p-3 shadow-lg text-xs">
+                      <p className="font-semibold text-slate-900 mb-1">{label}</p>
+                      {payload.map((p, i) => (
+                        <p key={i} style={{ color: p.color }} className="font-medium">
+                          {p.name}: <span className="font-mono font-bold">${Number(p.value).toFixed(1)}M</span>
+                        </p>
+                      ))}
+                    </div>
+                  );
+                }}
+              />
               <Legend />
               <Bar dataKey="lpReturn" name="LP Return" fill="#059669" radius={[4, 4, 0, 0]} />
               <Bar dataKey="gpReturn" name="GP Take" fill="#f59e0b" radius={[4, 4, 0, 0]} />

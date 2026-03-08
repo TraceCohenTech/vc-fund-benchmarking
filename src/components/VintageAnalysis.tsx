@@ -47,8 +47,19 @@ export default function VintageAnalysis({ rows }: Props) {
           <XAxis dataKey="vintage" tick={{ fontSize: 11, fill: "#64748b" }} />
           <YAxis tick={{ fontSize: 11, fill: "#64748b" }} tickFormatter={(v) => `${v}x`} />
           <Tooltip
-            formatter={(v) => [`${Number(v).toFixed(1)}x`, "Avg TVPI"]}
-            labelFormatter={(v) => `Vintage ${v}`}
+            content={({ active, payload, label }) => {
+              if (!active || !payload?.length) return null;
+              const d = payload[0]?.payload;
+              return (
+                <div className="bg-white border border-slate-200 rounded-lg p-3 shadow-lg text-xs">
+                  <p className="font-semibold text-slate-900 mb-1">Vintage {label}</p>
+                  <p className="text-slate-600">Avg TVPI: <span className="font-mono font-bold">{d?.avgTVPI?.toFixed(2)}x</span></p>
+                  <p className="text-slate-600">Median TVPI: <span className="font-mono font-bold">{d?.medianTVPI?.toFixed(2)}x</span></p>
+                  <p className="text-slate-600">Funds: <span className="font-mono font-bold">{d?.count}</span></p>
+                  <p className="text-slate-500 mt-0.5">{d?.regime}</p>
+                </div>
+              );
+            }}
           />
           <Bar dataKey="avgTVPI" name="Avg TVPI" radius={[4, 4, 0, 0]}>
             {data.map((d, i) => (

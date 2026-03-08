@@ -147,7 +147,21 @@ export default function ComparisonView({ rows }: Props) {
                 <BarChart data={barData} barGap={4}>
                   <XAxis dataKey="name" tick={{ fontSize: 11, fill: "#64748b" }} />
                   <YAxis tick={{ fontSize: 11, fill: "#64748b" }} />
-                  <Tooltip />
+                  <Tooltip
+                    content={({ active, payload, label }) => {
+                      if (!active || !payload?.length) return null;
+                      return (
+                        <div className="bg-white border border-slate-200 rounded-lg p-3 shadow-lg text-xs">
+                          <p className="font-semibold text-slate-900 mb-1">{label}</p>
+                          {payload.map((p, i) => (
+                            <p key={i} className="text-slate-600">
+                              {p.name}: <span className="font-mono font-bold">{Number(p.value).toFixed(2)}x</span>
+                            </p>
+                          ))}
+                        </div>
+                      );
+                    }}
+                  />
                   <Legend />
                   <Bar dataKey="TVPI" name="Net TVPI" radius={[4, 4, 0, 0]}>
                     {barData.map((d, i) => (

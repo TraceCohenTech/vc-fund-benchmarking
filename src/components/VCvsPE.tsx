@@ -1,6 +1,6 @@
 import { useMemo } from "react";
 import { motion } from "framer-motion";
-import { BarChart, Bar, XAxis, YAxis, Tooltip, ResponsiveContainer, CartesianGrid, Legend, LineChart, Line, Cell, Area, ComposedChart } from "recharts";
+import { BarChart, Bar, XAxis, YAxis, Tooltip, ResponsiveContainer, CartesianGrid, Legend, Line, Area, ComposedChart } from "recharts";
 import type { DerivedFundRow } from "../types";
 import { median } from "../utils/calculations";
 
@@ -51,6 +51,22 @@ export default function VCvsPE({ rows }: Props) {
       };
     });
   }, [rows]);
+
+  // Reshape data for bar chart: metrics as rows, strategies as separate bars
+  const barData = useMemo(() => [
+    {
+      metric: "TVPI",
+      "Early-Stage VC": stats.find((s) => s.strategy === "Early-Stage VC")?.medianTVPI ?? 0,
+      "Multi-Stage": stats.find((s) => s.strategy === "Multi-Stage")?.medianTVPI ?? 0,
+      "Growth Equity": stats.find((s) => s.strategy === "Growth Equity")?.medianTVPI ?? 0,
+    },
+    {
+      metric: "DPI",
+      "Early-Stage VC": stats.find((s) => s.strategy === "Early-Stage VC")?.medianDPI ?? 0,
+      "Multi-Stage": stats.find((s) => s.strategy === "Multi-Stage")?.medianDPI ?? 0,
+      "Growth Equity": stats.find((s) => s.strategy === "Growth Equity")?.medianDPI ?? 0,
+    },
+  ], [stats]);
 
   // Vintage-by-vintage comparison (2004+ only)
   const vintageData = useMemo(() => {
@@ -141,39 +157,31 @@ export default function VCvsPE({ rows }: Props) {
           <h3 className="text-sm font-medium text-slate-700 mb-2">Median Returns by Strategy</h3>
           <ResponsiveContainer width="100%" height={280}>
             <BarChart
-              data={stats}
+              data={barData}
               margin={{ top: 10, right: 10, bottom: 10, left: 10 }}
             >
               <CartesianGrid strokeDasharray="3 3" stroke="#f1f5f9" />
-              <XAxis dataKey="strategy" tick={{ fontSize: 10, fill: "#64748b" }} />
+              <XAxis dataKey="metric" tick={{ fontSize: 11, fill: "#64748b", fontWeight: 600 }} />
               <YAxis tick={{ fontSize: 10, fill: "#64748b" }} tickFormatter={(v) => `${v}x`} />
               <Tooltip
-                content={({ active, payload }) => {
+                content={({ active, payload, label }) => {
                   if (!active || !payload?.length) return null;
-                  const d = payload[0]?.payload;
-                  if (!d) return null;
                   return (
                     <div className="bg-white border border-slate-200 rounded-lg p-3 shadow-lg text-xs">
-                      <p className="font-semibold text-slate-900 mb-1">{d.strategy}</p>
-                      <p className="text-slate-600">Median TVPI: <span className="font-mono font-bold">{d.medianTVPI.toFixed(2)}x</span></p>
-                      <p className="text-slate-600">Median DPI: <span className="font-mono font-bold">{d.medianDPI.toFixed(2)}x</span></p>
-                      <p className="text-slate-600">Median IRR: <span className="font-mono font-bold">{d.medianIRR.toFixed(1)}%</span></p>
-                      <p className="text-slate-600">Hit Rate (3x+): <span className="font-mono font-bold">{d.pctAbove3x}%</span></p>
+                      <p className="font-semibold text-slate-900 mb-1">Median {label}</p>
+                      {payload.map((p, i) => (
+                        <p key={i} style={{ color: p.color }}>
+                          {p.name}: <span className="font-mono font-bold">{Number(p.value).toFixed(2)}x</span>
+                        </p>
+                      ))}
                     </div>
                   );
                 }}
               />
               <Legend />
-              <Bar dataKey="medianTVPI" name="Median TVPI" radius={[4, 4, 0, 0]} animationDuration={800}>
-                {stats.map((s, i) => (
-                  <Cell key={i} fill={STRATEGY_COLORS[s.strategy]} />
-                ))}
-              </Bar>
-              <Bar dataKey="medianDPI" name="Median DPI" radius={[4, 4, 0, 0]} animationDuration={1000}>
-                {stats.map((s, i) => (
-                  <Cell key={i} fill={STRATEGY_COLORS[s.strategy] + "80"} />
-                ))}
-              </Bar>
+              <Bar dataKey="Early-Stage VC" fill={STRATEGY_COLORS["Early-Stage VC"]} radius={[4, 4, 0, 0]} animationDuration={800} />
+              <Bar dataKey="Multi-Stage" fill={STRATEGY_COLORS["Multi-Stage"]} radius={[4, 4, 0, 0]} animationDuration={900} />
+              <Bar dataKey="Growth Equity" fill={STRATEGY_COLORS["Growth Equity"]} radius={[4, 4, 0, 0]} animationDuration={1000} />
             </BarChart>
           </ResponsiveContainer>
         </div>
@@ -210,6 +218,7 @@ export default function VCvsPE({ rows }: Props) {
                 fill={STRATEGY_COLORS["Early-Stage VC"]}
                 fillOpacity={0.06}
                 connectNulls
+                legendType="none"
               />
               <Area
                 type="monotone"
@@ -218,6 +227,7 @@ export default function VCvsPE({ rows }: Props) {
                 fill={STRATEGY_COLORS["Multi-Stage"]}
                 fillOpacity={0.06}
                 connectNulls
+                legendType="none"
               />
               <Area
                 type="monotone"
@@ -226,6 +236,7 @@ export default function VCvsPE({ rows }: Props) {
                 fill={STRATEGY_COLORS["Growth Equity"]}
                 fillOpacity={0.06}
                 connectNulls
+                legendType="none"
               />
               <Line
                 type="monotone"
