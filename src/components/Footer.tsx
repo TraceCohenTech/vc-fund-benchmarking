@@ -1,10 +1,13 @@
 import { Twitter, Mail, Shield } from "lucide-react";
 
 const SOURCES = [
+  { name: "AngelList Fund Benchmarks Report 2025", note: "Quartile benchmarks for vintages 2017–2024 (as of Jan 1, 2026)" },
+  { name: "Cambridge Associates", note: "VC quartile benchmarks for vintages 2004–2016" },
   { name: "CalPERS PEP Fund Performance", note: "Insight, Khosla, Tiger Global, Lightspeed" },
+  { name: "OPERF (Oregon PERS)", note: "GGV, USV, TCV, Vista Equity, NEA, Madrona, Matrix (Q1 2025)" },
+  { name: "WSIB (Washington State)", note: "ARCH, OrbiMed, Flagship, Tailwind, Novo, Olympic (Sep 2024)" },
   { name: "Lightspeed Venture Partners", note: "Early-stage track record (Sep 2024)" },
   { name: "The Information", note: "USV fund IRR performance" },
-  { name: "Cambridge Associates", note: "VC quartile benchmarks" },
   { name: "Newcomer", note: "Thrive, a16z performance data" },
   { name: "Arfur Rock", note: "Founders Fund performance data" },
   { name: "Carta Fund Performance Reports", note: "Quarterly quartile data" },
@@ -28,8 +31,8 @@ export default function Footer() {
         </div>
       </div>
       <p className="text-center text-xs text-slate-400 mb-4">
-        Benchmark quartile data derived from Cambridge Associates and Carta quarterly reports.
-        Individual fund data from public pension disclosures and published reports. All values net to LP unless noted.
+        Benchmark quartile data: Cambridge Associates (vintages 2004–2016) and AngelList Fund Benchmarks Report 2025 (vintages 2017–2024, data as of Jan 1, 2026).
+        Individual fund data from public pension disclosures (CalPERS, OPERF, WSIB) and published reports. All values net to LP unless noted.
       </p>
       <div className="flex items-center justify-center gap-2 text-xs text-slate-400 mb-4 px-4 py-2.5 bg-slate-50 rounded-lg border border-slate-100 max-w-lg mx-auto">
         <Shield className="w-3.5 h-3.5 text-emerald-500 shrink-0" />

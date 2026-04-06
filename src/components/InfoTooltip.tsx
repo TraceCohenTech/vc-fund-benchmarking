@@ -6,7 +6,7 @@ const TERMS: Record<string, string> = {
   DPI: "Distributions to Paid-In. Cash actually returned to LPs divided by capital called. Unlike TVPI, DPI only counts realized returns — money in the bank.",
   IRR: "Internal Rate of Return. The annualized return accounting for the timing of cash flows. Higher IRR means faster compounding, but can be misleading for young funds.",
   PME: "Public Market Equivalent. Compares fund performance to investing the same capital in the S&P 500. A PME above 1.0x means the fund beat public markets.",
-  Quartile: "Ranking vs. peer funds of the same vintage year. Top quartile = top 25% of funds. Based on Cambridge Associates benchmark data.",
+  Quartile: "Ranking vs. peer funds of the same vintage year. Top quartile = top 25% of funds. Based on Cambridge Associates (2004–2016) and AngelList (2017–2024) benchmark data.",
 };
 
 type Props = {
