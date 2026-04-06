@@ -1,7 +1,7 @@
 import type { BenchmarkData } from "../types";
 
-// Cambridge Associates US Venture Capital benchmark data
-// Sources: CA quarterly benchmark PDFs, Carta fund performance reports
+// US Venture Capital benchmark data
+// Sources: Cambridge Associates (2004-2016), AngelList Fund Benchmarks Report 2025 (2017-2024, data as of Jan 1 2026)
 // Quartile cutoffs by vintage year for Net TVPI, Net IRR, DPI
 export const BENCHMARKS: BenchmarkData[] = [
   { vintage: 2004, topQuartileTVPI: 3.2, medianTVPI: 1.8, bottomQuartileTVPI: 0.9, topQuartileIRR: 0.25, medianIRR: 0.12, bottomQuartileIRR: -0.02, topQuartileDPI: 2.8, medianDPI: 1.5, bottomQuartileDPI: 0.6 },
@@ -17,12 +17,13 @@ export const BENCHMARKS: BenchmarkData[] = [
   { vintage: 2014, topQuartileTVPI: 3.0, medianTVPI: 1.9, bottomQuartileTVPI: 1.1, topQuartileIRR: 0.22, medianIRR: 0.12, bottomQuartileIRR: 0.01, topQuartileDPI: 1.5, medianDPI: 0.7, bottomQuartileDPI: 0.2 },
   { vintage: 2015, topQuartileTVPI: 2.8, medianTVPI: 1.8, bottomQuartileTVPI: 1.0, topQuartileIRR: 0.22, medianIRR: 0.13, bottomQuartileIRR: 0.02, topQuartileDPI: 1.2, medianDPI: 0.5, bottomQuartileDPI: 0.1 },
   { vintage: 2016, topQuartileTVPI: 2.7, medianTVPI: 1.7, bottomQuartileTVPI: 1.0, topQuartileIRR: 0.21, medianIRR: 0.12, bottomQuartileIRR: 0.01, topQuartileDPI: 0.9, medianDPI: 0.4, bottomQuartileDPI: 0.1 },
-  { vintage: 2017, topQuartileTVPI: 2.5, medianTVPI: 1.6, bottomQuartileTVPI: 1.0, topQuartileIRR: 0.20, medianIRR: 0.11, bottomQuartileIRR: 0.00, topQuartileDPI: 0.6, medianDPI: 0.2, bottomQuartileDPI: 0.05 },
-  { vintage: 2018, topQuartileTVPI: 2.3, medianTVPI: 1.5, bottomQuartileTVPI: 0.9, topQuartileIRR: 0.20, medianIRR: 0.10, bottomQuartileIRR: -0.02, topQuartileDPI: 0.4, medianDPI: 0.1, bottomQuartileDPI: 0.0 },
-  { vintage: 2019, topQuartileTVPI: 2.1, medianTVPI: 1.4, bottomQuartileTVPI: 0.9, topQuartileIRR: 0.22, medianIRR: 0.10, bottomQuartileIRR: -0.05, topQuartileDPI: 0.3, medianDPI: 0.05, bottomQuartileDPI: 0.0 },
-  { vintage: 2020, topQuartileTVPI: 1.8, medianTVPI: 1.3, bottomQuartileTVPI: 0.8, topQuartileIRR: 0.18, medianIRR: 0.08, bottomQuartileIRR: -0.08, topQuartileDPI: 0.2, medianDPI: 0.0, bottomQuartileDPI: 0.0 },
-  { vintage: 2021, topQuartileTVPI: 1.5, medianTVPI: 1.1, bottomQuartileTVPI: 0.7, topQuartileIRR: 0.15, medianIRR: 0.03, bottomQuartileIRR: -0.15, topQuartileDPI: 0.1, medianDPI: 0.0, bottomQuartileDPI: 0.0 },
-  { vintage: 2022, topQuartileTVPI: 1.4, medianTVPI: 1.1, bottomQuartileTVPI: 0.8, topQuartileIRR: 0.14, medianIRR: 0.04, bottomQuartileIRR: -0.10, topQuartileDPI: 0.05, medianDPI: 0.0, bottomQuartileDPI: 0.0 },
-  { vintage: 2023, topQuartileTVPI: 1.2, medianTVPI: 1.0, bottomQuartileTVPI: 0.8, topQuartileIRR: 0.10, medianIRR: 0.02, bottomQuartileIRR: -0.08, topQuartileDPI: 0.0, medianDPI: 0.0, bottomQuartileDPI: 0.0 },
-  { vintage: 2024, topQuartileTVPI: 1.1, medianTVPI: 0.9, bottomQuartileTVPI: 0.7, topQuartileIRR: 0.05, medianIRR: -0.05, bottomQuartileIRR: -0.15, topQuartileDPI: 0.0, medianDPI: 0.0, bottomQuartileDPI: 0.0 },
+  // AngelList Fund Benchmarks Report 2025 — emerging managers, <$250M funds, data as of Jan 1 2026
+  { vintage: 2017, topQuartileTVPI: 6.37, medianTVPI: 3.30, bottomQuartileTVPI: 2.22, topQuartileIRR: 0.260, medianIRR: 0.167, bottomQuartileIRR: 0.109, topQuartileDPI: 0.72, medianDPI: 0.31, bottomQuartileDPI: 0.07 },
+  { vintage: 2018, topQuartileTVPI: 3.79, medianTVPI: 2.76, bottomQuartileTVPI: 1.60, topQuartileIRR: 0.209, medianIRR: 0.156, bottomQuartileIRR: 0.074, topQuartileDPI: 0.67, medianDPI: 0.38, bottomQuartileDPI: 0.06 },
+  { vintage: 2019, topQuartileTVPI: 4.02, medianTVPI: 2.48, bottomQuartileTVPI: 1.53, topQuartileIRR: 0.267, medianIRR: 0.156, bottomQuartileIRR: 0.076, topQuartileDPI: 0.30, medianDPI: 0.09, bottomQuartileDPI: 0.01 },
+  { vintage: 2020, topQuartileTVPI: 2.47, medianTVPI: 1.59, bottomQuartileTVPI: 1.23, topQuartileIRR: 0.195, medianIRR: 0.107, bottomQuartileIRR: 0.042, topQuartileDPI: 0.19, medianDPI: 0.06, bottomQuartileDPI: 0.00 },
+  { vintage: 2021, topQuartileTVPI: 1.31, medianTVPI: 1.09, bottomQuartileTVPI: 0.96, topQuartileIRR: 0.072, medianIRR: 0.022, bottomQuartileIRR: -0.011, topQuartileDPI: 0.05, medianDPI: 0.01, bottomQuartileDPI: 0.00 },
+  { vintage: 2022, topQuartileTVPI: 1.34, medianTVPI: 1.07, bottomQuartileTVPI: 0.93, topQuartileIRR: 0.116, medianIRR: 0.027, bottomQuartileIRR: -0.026, topQuartileDPI: 0.06, medianDPI: 0.00, bottomQuartileDPI: 0.00 },
+  { vintage: 2023, topQuartileTVPI: 1.34, medianTVPI: 1.06, bottomQuartileTVPI: 0.92, topQuartileIRR: 0.161, medianIRR: 0.036, bottomQuartileIRR: -0.050, topQuartileDPI: 0.00, medianDPI: 0.00, bottomQuartileDPI: 0.00 },
+  { vintage: 2024, topQuartileTVPI: 1.10, medianTVPI: 1.02, bottomQuartileTVPI: 0.93, topQuartileIRR: 0.125, medianIRR: 0.023, bottomQuartileIRR: -0.080, topQuartileDPI: 0.00, medianDPI: 0.00, bottomQuartileDPI: 0.00 },
 ];
