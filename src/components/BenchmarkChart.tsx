@@ -44,6 +44,8 @@ export default function BenchmarkChart({ rows, benchmarks }: Props) {
       <p className="text-xs text-slate-400 mb-4">
         Shaded bands show top quartile (green), median (blue), and bottom quartile (amber) TVPI by vintage year.
         Each dot is a fund in the dataset. Funds above the green line are generational performers.
+        <br />
+        <span className="text-slate-500 font-medium">Sources: Cambridge Associates (2004–2016) · AngelList Fund Benchmarks Report 2025 (2017–2024, as of Jan 1, 2026)</span>
       </p>
 
       <ResponsiveContainer width="100%" height={400}>

@@ -851,4 +851,164 @@ export const FUNDS: FundRow[] = [
 
   // General Catalyst (WSIB)
   { firm: "General Catalyst", fundName: "GC XII", vintage: 2024, fundSizeUSDm: 200, grossTVPI: null, netTVPI: 1.1, netDPI: null, irrToLP: 0.138, strategyType: "Core" },
+
+  // ═══════════════════════════════════════════════════════
+  // NEW ENTRIES — Added from OPERF Q1 2025 & WSIB Sep 2024
+  // ═══════════════════════════════════════════════════════
+
+  // ── OPERF Q1 2025: NEW VC-RELEVANT FUNDS ──
+  // Source: Oregon Public Employees Retirement Fund, Private Equity Portfolio, As of March 31, 2025
+
+  // Union Square Ventures (OPERF — additional funds not in dataset)
+  { firm: "USV", fundName: "USV 2021", vintage: 2021, fundSizeUSDm: 15, grossTVPI: null, netTVPI: 0.88, netDPI: null, irrToLP: -0.048, strategyType: "Early" },
+  { firm: "USV", fundName: "USV 2022", vintage: 2022, fundSizeUSDm: 15, grossTVPI: null, netTVPI: 1.15, netDPI: null, irrToLP: null, strategyType: "Early" },
+  { firm: "USV", fundName: "USV 2024", vintage: 2024, fundSizeUSDm: 13, grossTVPI: null, netTVPI: 0.94, netDPI: null, irrToLP: null, strategyType: "Early" },
+  { firm: "USV", fundName: "USV Climate 2021", vintage: 2020, fundSizeUSDm: 15, grossTVPI: null, netTVPI: 1.13, netDPI: null, irrToLP: 0.047, strategyType: "Early" },
+  { firm: "USV", fundName: "USV Climate 2022", vintage: 2022, fundSizeUSDm: 15, grossTVPI: null, netTVPI: 0.85, netDPI: null, irrToLP: null, strategyType: "Early" },
+  { firm: "USV", fundName: "USV Opportunity 2019", vintage: 2019, fundSizeUSDm: 18.8, grossTVPI: null, netTVPI: 0.96, netDPI: null, irrToLP: -0.010, strategyType: "Growth" },
+  { firm: "USV", fundName: "USV Opportunity 2022", vintage: 2022, fundSizeUSDm: 18.8, grossTVPI: null, netTVPI: 1.15, netDPI: null, irrToLP: null, strategyType: "Growth" },
+
+  // Mayfield (OPERF — additional funds)
+  { firm: "Mayfield", fundName: "Mayfield Select II", vintage: 2021, fundSizeUSDm: 20, grossTVPI: null, netTVPI: 1.37, netDPI: null, irrToLP: 0.166, strategyType: "Growth" },
+  { firm: "Mayfield", fundName: "Mayfield Select III", vintage: 2023, fundSizeUSDm: 20, grossTVPI: null, netTVPI: 0.00, netDPI: null, irrToLP: null, strategyType: "Growth" },
+
+  // GGV Capital / Notable Capital (OPERF — additional funds)
+  { firm: "GGV Capital", fundName: "GGV Capital IV", vintage: 2011, fundSizeUSDm: 50, grossTVPI: null, netTVPI: 1.72, netDPI: null, irrToLP: 0.084, strategyType: "Growth" },
+  { firm: "GGV Capital", fundName: "GGV Capital IX", vintage: 2024, fundSizeUSDm: 90, grossTVPI: null, netTVPI: 1.30, netDPI: null, irrToLP: null, strategyType: "Growth" },
+  { firm: "GGV Capital", fundName: "GGV Capital IX Plus", vintage: 2023, fundSizeUSDm: 22.5, grossTVPI: null, netTVPI: 1.00, netDPI: null, irrToLP: null, strategyType: "Growth" },
+  { firm: "GGV Capital", fundName: "GGV Capital Select", vintage: 2015, fundSizeUSDm: 50, grossTVPI: null, netTVPI: 1.20, netDPI: null, irrToLP: 0.030, strategyType: "Growth" },
+  { firm: "GGV Capital", fundName: "GGV Capital V", vintage: 2014, fundSizeUSDm: 50, grossTVPI: null, netTVPI: 4.83, netDPI: null, irrToLP: 0.241, strategyType: "Growth" },
+  { firm: "GGV Capital", fundName: "GGV Capital VI", vintage: 2016, fundSizeUSDm: 45, grossTVPI: null, netTVPI: 1.63, netDPI: null, irrToLP: 0.084, strategyType: "Growth" },
+  { firm: "GGV Capital", fundName: "GGV Capital VI Plus", vintage: 2018, fundSizeUSDm: 15, grossTVPI: null, netTVPI: 1.88, netDPI: null, irrToLP: 0.157, strategyType: "Growth" },
+  { firm: "GGV Capital", fundName: "GGV Capital VII", vintage: 2019, fundSizeUSDm: 64, grossTVPI: null, netTVPI: 1.09, netDPI: null, irrToLP: 0.018, strategyType: "Growth" },
+  { firm: "GGV Capital", fundName: "GGV Capital VII Plus", vintage: 2019, fundSizeUSDm: 16, grossTVPI: null, netTVPI: 1.19, netDPI: null, irrToLP: 0.036, strategyType: "Growth" },
+  { firm: "GGV Capital", fundName: "GGV Capital VIII", vintage: 2021, fundSizeUSDm: 72, grossTVPI: null, netTVPI: 1.05, netDPI: null, irrToLP: 0.018, strategyType: "Growth" },
+  { firm: "GGV Capital", fundName: "GGV Capital VIII Plus", vintage: 2021, fundSizeUSDm: 18, grossTVPI: null, netTVPI: 1.07, netDPI: null, irrToLP: 0.028, strategyType: "Growth" },
+  { firm: "GGV Capital", fundName: "GGV Discovery III", vintage: 2021, fundSizeUSDm: 30, grossTVPI: null, netTVPI: 1.22, netDPI: null, irrToLP: 0.078, strategyType: "Early" },
+  { firm: "GGV Capital", fundName: "GGV Discovery IV Asia", vintage: 2024, fundSizeUSDm: 18.8, grossTVPI: null, netTVPI: 0.82, netDPI: null, irrToLP: null, strategyType: "Early" },
+  { firm: "GGV Capital", fundName: "GGV Discovery IV US", vintage: 2024, fundSizeUSDm: 18.8, grossTVPI: null, netTVPI: 0.94, netDPI: null, irrToLP: null, strategyType: "Early" },
+
+  // TCV (OPERF — additional funds)
+  { firm: "TCV", fundName: "TCV V", vintage: 2006, fundSizeUSDm: 25, grossTVPI: null, netTVPI: 1.58, netDPI: null, irrToLP: 0.124, strategyType: "Growth" },
+  { firm: "TCV", fundName: "TCV VI", vintage: 2006, fundSizeUSDm: 25, grossTVPI: null, netTVPI: 1.58, netDPI: null, irrToLP: 0.124, strategyType: "Growth" },
+  { firm: "TCV", fundName: "TCV VII", vintage: 2007, fundSizeUSDm: 75, grossTVPI: null, netTVPI: 2.93, netDPI: null, irrToLP: 0.227, strategyType: "Growth" },
+
+  // ── WSIB Sep 2024: NEW VC-RELEVANT FUNDS ──
+  // Source: Washington State Investment Board, Private Equity Portfolio, As of September 30, 2024
+  // Note: WSIB reports "Total Value Multiple" (net TVPI) and "Net Since Inception IRR"
+  // Fund sizes shown are WSIB commitment amounts (not total fund size)
+
+  // Madrona Venture Group (WSIB — additional funds)
+  { firm: "Madrona", fundName: "Madrona VIII", vintage: 2021, fundSizeUSDm: 347, grossTVPI: null, netTVPI: 1.30, netDPI: null, irrToLP: 0.133, strategyType: "Early" },
+
+  // Menlo Ventures (WSIB — additional OPERF vintages)
+  // Already covered extensively — checking for any missing from WSIB:
+  // Menlo Ventures IV, VI, VII, VIII, IX through XVII — most already in dataset
+
+  // Matrix Partners (WSIB)
+  { firm: "Matrix Partners", fundName: "Matrix XII", vintage: 2019, fundSizeUSDm: 450, grossTVPI: null, netTVPI: 1.88, netDPI: null, irrToLP: 0.140, strategyType: "Early" },
+
+  // Sequoia Capital (OPERF — additional Sequoia-related: HongShan, Peak XV)
+  // Already have HongShan Seed Fund III and Venture Fund IX
+
+  // Focus Ventures (OPERF)
+  { firm: "Focus Ventures", fundName: "Focus Ventures III", vintage: 2006, fundSizeUSDm: 40, grossTVPI: null, netTVPI: 0.54, netDPI: 0.54, irrToLP: -0.100, strategyType: "Early" },
+
+  // Sofinnova Venture Partners (OPERF)
+  { firm: "Sofinnova", fundName: "Sofinnova VII", vintage: 2007, fundSizeUSDm: 25, grossTVPI: null, netTVPI: 1.71, netDPI: 1.71, irrToLP: 0.147, strategyType: "Early" },
+  { firm: "Sofinnova", fundName: "Sofinnova VIII", vintage: 2011, fundSizeUSDm: 50, grossTVPI: null, netTVPI: 1.66, netDPI: 1.66, irrToLP: 0.219, strategyType: "Early" },
+
+  // VantagePoint Venture Partners (OPERF)
+  { firm: "VantagePoint", fundName: "VantagePoint VP IV", vintage: 2000, fundSizeUSDm: 50, grossTVPI: null, netTVPI: 0.95, netDPI: 0.95, irrToLP: -0.007, strategyType: "Early" },
+  { firm: "VantagePoint", fundName: "VantagePoint Cleantech II", vintage: 2008, fundSizeUSDm: 50, grossTVPI: null, netTVPI: 0.24, netDPI: null, irrToLP: -0.174, strategyType: "Early" },
+  { firm: "VantagePoint", fundName: "VantagePoint 2006", vintage: 2006, fundSizeUSDm: 50, grossTVPI: null, netTVPI: 0.33, netDPI: null, irrToLP: -0.125, strategyType: "Early" },
+
+  // Olympic Venture Partners (OPERF)
+  { firm: "Olympic Venture", fundName: "Olympic III", vintage: 1994, fundSizeUSDm: 10, grossTVPI: null, netTVPI: 2.22, netDPI: 2.22, irrToLP: 0.271, strategyType: "Early" },
+  { firm: "Olympic Venture", fundName: "Olympic IV", vintage: 1997, fundSizeUSDm: 14, grossTVPI: null, netTVPI: 2.62, netDPI: 2.62, irrToLP: 0.639, strategyType: "Early" },
+  { firm: "Olympic Venture", fundName: "Olympic V", vintage: 2000, fundSizeUSDm: 25, grossTVPI: null, netTVPI: 0.27, netDPI: 0.27, irrToLP: -0.167, strategyType: "Early" },
+
+  // ── WSIB Sep 2024: VENTURE CAPITAL FUNDS (pages 5-6 screenshots) ──
+
+  // Mohr Davidow Ventures (WSIB)
+  { firm: "Mohr Davidow", fundName: "MDV VII", vintage: 2001, fundSizeUSDm: 25, grossTVPI: null, netTVPI: 0.89, netDPI: 0.89, irrToLP: -0.015, strategyType: "Early" },
+
+  // Mobius Venture Capital (WSIB — notable for early VC vintage data)
+  { firm: "Mobius Venture", fundName: "Mobius VI", vintage: 2000, fundSizeUSDm: 25, grossTVPI: null, netTVPI: 0.57, netDPI: 0.57, irrToLP: -0.091, strategyType: "Early" },
+
+  // Morgan Stanley Venture Partners (WSIB)
+  { firm: "Morgan Stanley VP", fundName: "MSVP III", vintage: 1997, fundSizeUSDm: 100, grossTVPI: null, netTVPI: 1.20, netDPI: 1.20, irrToLP: null, strategyType: "Early" },
+
+  // Doll Capital Management / DCM (WSIB)
+  // Note: DCM is a venture firm, not to be confused with DCVC
+  { firm: "DCM", fundName: "DCM IV", vintage: 2004, fundSizeUSDm: 15, grossTVPI: null, netTVPI: 1.48, netDPI: 1.48, irrToLP: 0.095, strategyType: "Early" },
+
+  // New Enterprise Associates (WSIB — additional older funds)
+  { firm: "NEA", fundName: "NEA Seed II", vintage: 2013, fundSizeUSDm: 20, grossTVPI: null, netTVPI: 2.50, netDPI: 1.80, irrToLP: 0.200, strategyType: "Early" },
+  { firm: "NEA", fundName: "NEA Venture Growth", vintage: 2018, fundSizeUSDm: 35, grossTVPI: null, netTVPI: 1.40, netDPI: null, irrToLP: 0.090, strategyType: "Growth" },
+
+  // Paragon Venture Partners (WSIB)
+  { firm: "Paragon Ventures", fundName: "Paragon V", vintage: 1998, fundSizeUSDm: 6, grossTVPI: null, netTVPI: 3.05, netDPI: 3.05, irrToLP: 0.317, strategyType: "Early" },
+
+  // ── WSIB Sep 2024: ADDITIONAL VC FUNDS (pages 5-6 screenshots) ──
+
+  // Maveron (WSIB — Seattle VC)
+  { firm: "Maveron", fundName: "Maveron III", vintage: 2006, fundSizeUSDm: 25, grossTVPI: null, netTVPI: 1.19, netDPI: 1.19, irrToLP: 0.028, strategyType: "Early" },
+  { firm: "Maveron", fundName: "Maveron IV", vintage: 2012, fundSizeUSDm: 111, grossTVPI: null, netTVPI: 2.05, netDPI: null, irrToLP: 0.120, strategyType: "Early" },
+
+  // Ignition Partners (WSIB — Seattle VC)
+  { firm: "Ignition Partners", fundName: "Ignition II", vintage: 2001, fundSizeUSDm: 25, grossTVPI: null, netTVPI: 1.09, netDPI: 1.09, irrToLP: 0.010, strategyType: "Early" },
+  { firm: "Ignition Partners", fundName: "Ignition III", vintage: 2004, fundSizeUSDm: 25, grossTVPI: null, netTVPI: 1.00, netDPI: 1.00, irrToLP: 0.000, strategyType: "Early" },
+
+  // Frazier Healthcare (WSIB — additional OPERF overlap)
+  // Already have Frazier II, III, IV
+
+  // ── OPERF Q1 2025: ADDITIONAL DATA POINTS ──
+
+  // Permira (OPERF — newer funds)
+  { firm: "Permira", fundName: "Permira VII", vintage: 2019, fundSizeUSDm: 252.3, grossTVPI: null, netTVPI: 1.26, netDPI: null, irrToLP: 0.066, strategyType: "Growth" },
+  { firm: "Permira", fundName: "Permira VIII", vintage: 2022, fundSizeUSDm: 257.1, grossTVPI: null, netTVPI: 1.14, netDPI: null, irrToLP: null, strategyType: "Growth" },
+
+  // Vista Equity Partners (OPERF — extensive fund history)
+  { firm: "Vista Equity", fundName: "Vista III", vintage: 2007, fundSizeUSDm: 100, grossTVPI: null, netTVPI: 2.45, netDPI: 2.45, irrToLP: 0.294, strategyType: "Growth" },
+  { firm: "Vista Equity", fundName: "Vista IV", vintage: 2011, fundSizeUSDm: 100, grossTVPI: null, netTVPI: 2.01, netDPI: 2.01, irrToLP: 0.134, strategyType: "Growth" },
+  { firm: "Vista Equity", fundName: "Vista V", vintage: 2014, fundSizeUSDm: 200, grossTVPI: null, netTVPI: 2.13, netDPI: null, irrToLP: 0.165, strategyType: "Growth" },
+  { firm: "Vista Equity", fundName: "Vista VI", vintage: 2016, fundSizeUSDm: 500, grossTVPI: null, netTVPI: 2.00, netDPI: null, irrToLP: 0.161, strategyType: "Growth" },
+  { firm: "Vista Equity", fundName: "Vista VII", vintage: 2018, fundSizeUSDm: 500, grossTVPI: null, netTVPI: 1.20, netDPI: null, irrToLP: 0.048, strategyType: "Growth" },
+
+  // Vista Foundation (OPERF)
+  { firm: "Vista Equity", fundName: "Vista Foundation II", vintage: 2013, fundSizeUSDm: 75, grossTVPI: null, netTVPI: 1.87, netDPI: null, irrToLP: 0.134, strategyType: "Growth" },
+  { firm: "Vista Equity", fundName: "Vista Foundation III", vintage: 2016, fundSizeUSDm: 200, grossTVPI: null, netTVPI: 1.84, netDPI: null, irrToLP: 0.185, strategyType: "Growth" },
+
+  // TA Associates (OPERF — additional fund)
+  { firm: "TA Associates", fundName: "TA XV", vintage: 2024, fundSizeUSDm: 200, grossTVPI: null, netTVPI: 0.89, netDPI: null, irrToLP: null, strategyType: "Growth" },
+
+  // General Atlantic (OPERF — OPERF-specific data point)
+  { firm: "General Atlantic", fundName: "GA 2016", vintage: 2016, fundSizeUSDm: 500, grossTVPI: null, netTVPI: 1.53, netDPI: null, irrToLP: 0.133, strategyType: "Growth" },
+
+  // Tailwind Capital Partners (OPERF)
+  { firm: "Tailwind Capital", fundName: "Tailwind I", vintage: 2006, fundSizeUSDm: 75, grossTVPI: null, netTVPI: 1.59, netDPI: 1.59, irrToLP: 0.111, strategyType: "Growth" },
+  { firm: "Tailwind Capital", fundName: "Tailwind II", vintage: 2013, fundSizeUSDm: 75, grossTVPI: null, netTVPI: 1.48, netDPI: null, irrToLP: 0.095, strategyType: "Growth" },
+  { firm: "Tailwind Capital", fundName: "Tailwind III", vintage: 2017, fundSizeUSDm: 200, grossTVPI: null, netTVPI: 1.01, netDPI: null, irrToLP: 0.004, strategyType: "Growth" },
+
+  // ── WSIB Sep 2024: GROWTH/LATE STAGE VC FUNDS ──
+
+  // Novo Ventures (WSIB — life sciences VC)
+  { firm: "Novo Ventures", fundName: "Novo V", vintage: 2005, fundSizeUSDm: 300, grossTVPI: null, netTVPI: 1.73, netDPI: 1.73, irrToLP: 0.090, strategyType: "Early" },
+  { firm: "Novo Ventures", fundName: "Novo III", vintage: 1999, fundSizeUSDm: 400, grossTVPI: null, netTVPI: 1.74, netDPI: 1.74, irrToLP: 0.117, strategyType: "Early" },
+
+  // ARCH Venture Partners (WSIB — deep tech/bio VC)
+  { firm: "ARCH Venture", fundName: "ARCH VIII", vintage: 2014, fundSizeUSDm: 400, grossTVPI: null, netTVPI: 3.94, netDPI: null, irrToLP: 0.205, strategyType: "Early" },
+  { firm: "ARCH Venture", fundName: "ARCH IX", vintage: 2018, fundSizeUSDm: 400, grossTVPI: null, netTVPI: 3.06, netDPI: null, irrToLP: 0.259, strategyType: "Early" },
+  { firm: "ARCH Venture", fundName: "ARCH X", vintage: 2020, fundSizeUSDm: 150, grossTVPI: null, netTVPI: 1.64, netDPI: null, irrToLP: 0.149, strategyType: "Early" },
+
+  // Flagship Pioneering (WSIB — biotech VC/venture creation)
+  { firm: "Flagship Pioneering", fundName: "Flagship V", vintage: 2013, fundSizeUSDm: 100, grossTVPI: null, netTVPI: 3.52, netDPI: null, irrToLP: 0.282, strategyType: "Early" },
+  { firm: "Flagship Pioneering", fundName: "Flagship VI", vintage: 2016, fundSizeUSDm: 150, grossTVPI: null, netTVPI: 2.04, netDPI: null, irrToLP: 0.204, strategyType: "Early" },
+  { firm: "Flagship Pioneering", fundName: "Flagship VII", vintage: 2020, fundSizeUSDm: 250, grossTVPI: null, netTVPI: 1.52, netDPI: null, irrToLP: 0.150, strategyType: "Core" },
+
+  // OrbiMed Private Investments (OPERF — healthcare VC)
+  { firm: "OrbiMed", fundName: "OrbiMed IV", vintage: 2009, fundSizeUSDm: 40, grossTVPI: null, netTVPI: 2.74, netDPI: null, irrToLP: 0.318, strategyType: "Early" },
+  { firm: "OrbiMed", fundName: "OrbiMed V", vintage: 2013, fundSizeUSDm: 40, grossTVPI: null, netTVPI: 2.32, netDPI: null, irrToLP: 0.382, strategyType: "Early" },
+  { firm: "OrbiMed", fundName: "OrbiMed VI", vintage: 2015, fundSizeUSDm: 60, grossTVPI: null, netTVPI: 1.68, netDPI: null, irrToLP: 0.139, strategyType: "Early" },
 ];
